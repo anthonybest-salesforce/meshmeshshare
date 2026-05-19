@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is MeshMesh — Salesforce Implementation Primer</title>
+  <script src="https://assets.meshmesh.io/system/tailwindcss-browser-4.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #6C3AED;
+      --color-primary-light: #8B5CF6;
+      --color-primary-dark: #5B21B6;
+      --color-accent: #06B6D4;
+      --color-accent-light: #22D3EE;
+      --color-accent-dark: #0891B2;
+      --color-success: #10B981;
+      --color-success-light: #34D399;
+      --color-warning: #F59E0B;
+      --color-danger: #EF4444;
+      --color-surface: #F8FAFC;
+      --color-surface-dark: #0F172A;
+      --color-surface-darker: #020617;
+      --color-muted: #64748B;
+      --color-border: #E2E8F0;
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; scroll-behavior: smooth; }
+    .gradient-text { background: linear-gradient(135deg, #8B5CF6, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #E2E8F0 20%, #E2E8F0 80%, transparent); }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .float { animation: float 6s ease-in-out infinite; }
+    .float-delay { animation: float 6s ease-in-out 2s infinite; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-surface-dark/90 backdrop-blur-lg border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="font-bold text-white text-lg tracking-tight">Mesh<span class="text-primary-light">Mesh</span></div>
+      <div class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#what" class="text-gray-400 hover:text-white transition-colors">What Is It</a>
+        <a href="#products" class="text-gray-400 hover:text-white transition-colors">Product Coverage</a>
+        <a href="#how" class="text-gray-400 hover:text-white transition-colors">How It Works</a>
+        <a href="#appexchange" class="text-gray-400 hover:text-white transition-colors">AppExchange</a>
+        <a href="#for-aes" class="text-gray-400 hover:text-white transition-colors">For AEs</a>
+        <a href="#security" class="text-gray-400 hover:text-white transition-colors">Security</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative bg-surface-dark text-white overflow-hidden pt-20">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 right-1/4 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[120px] float"></div>
+      <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] float-delay"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 text-sm font-medium text-primary-light mb-8">
+          <span class="w-2 h-2 bg-primary-light rounded-full animate-pulse"></span>
+          Internal Primer · For Salesforce AEs & Leadership
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+          What Is<br>
+          <span class="gradient-text">MeshMesh?</span>
+        </h1>
+        <p class="text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl">
+          AI-powered Salesforce implementation that turns weeks of professional services work into hours. AppExchange partner. Forward-deployed engineers. Your accounts move faster.
+        </p>
+      </div>
+      <!-- Hero Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl font-extrabold text-primary-light mb-1">80-95%</div>
+          <div class="text-sm text-gray-400 font-medium">Time Savings</div>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl font-extrabold text-accent-light mb-1">940%</div>
+          <div class="text-sm text-gray-400 font-medium">ROI Multiplier</div>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl font-extrabold text-success-light mb-1">15+</div>
+          <div class="text-sm text-gray-400 font-medium">Products Covered</div>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl font-extrabold text-warning mb-1">$0</div>
+          <div class="text-sm text-gray-400 font-medium">SF PS Required</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHAT IS IT ===================== -->
+  <section id="what" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">The Basics</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">MeshMesh in 60 Seconds</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Think of it as an AI implementation partner that speaks fluent Salesforce — every product, every API, every metadata type.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-gradient-to-br from-primary to-primary-dark rounded-3xl p-8 text-white card-hover">
+          <div class="text-3xl mb-4">🧠</div>
+          <h3 class="text-xl font-bold mb-3">AI That Knows Salesforce</h3>
+          <p class="text-white/80 text-sm leading-relaxed">MeshMesh has deep knowledge of Salesforce APIs, metadata, CLI commands, and product-specific patterns. It doesn't guess — it executes with the same precision as a senior Salesforce architect.</p>
+        </div>
+        <div class="bg-gradient-to-br from-accent-dark to-cyan-800 rounded-3xl p-8 text-white card-hover">
+          <div class="text-3xl mb-4">👩‍💻</div>
+          <h3 class="text-xl font-bold mb-3">Forward-Deployed Engineers</h3>
+          <p class="text-white/80 text-sm leading-relaxed">MeshMesh FDEs are embedded engineers who use the platform to execute at 10x speed. They handle implementations, migrations, and configurations that normally take SI teams months.</p>
+        </div>
+        <div class="bg-gradient-to-br from-emerald-700 to-emerald-900 rounded-3xl p-8 text-white card-hover">
+          <div class="text-3xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold mb-3">Programmatic Everything</h3>
+          <p class="text-white/80 text-sm leading-relaxed">Data Cloud ingestion, metadata deployment, Apex generation, Flow creation, segment building, email content — all executed programmatically. No clicking through Setup for hours.</p>
+        </div>
+      </div>
+      <div class="bg-gray-900 rounded-3xl p-8 md:p-12 text-white">
+        <h3 class="text-xl font-bold mb-6 text-center">The Bottom Line for Your Accounts</h3>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div>
+            <p class="text-3xl font-extrabold text-primary-light mb-2">Faster Time-to-Value</p>
+            <p class="text-sm text-gray-400">Customers see live, working implementations in weeks instead of quarters. POCs that prove value before the big commitment.</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold text-accent-light mb-2">Lower Entry Barrier</p>
+            <p class="text-sm text-gray-400">No $1M+ SI engagement required to get started. MeshMesh + 1-2 FDEs replaces the traditional services model for initial implementations.</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold text-success-light mb-2">More License Revenue</p>
+            <p class="text-sm text-gray-400">When implementation is fast and cheap, customers buy more products. Data Cloud + MC Next + MCI becomes a realistic 30-day POC, not a 12-month roadmap.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== PRODUCT COVERAGE ===================== -->
+  <section id="products" class="py-20 md:py-28 bg-surface">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Product Coverage</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Every Cloud. Every Product.</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">MeshMesh covers the full Salesforce ecosystem — not just one cloud. This means multi-product deals can be implemented in parallel.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Tier 1: Core Platform -->
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">☁️</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Salesforce Platform</h3>
+          <p class="text-xs text-muted">Apex, LWC, Flows, metadata, permissions, custom objects, CI/CD</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-purple-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">📊</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Data Cloud</h3>
+          <p class="text-xs text-muted">DMOs, DLOs, identity resolution, segments, calculated insights, activation</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-cyan-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">📧</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Marketing Cloud Next</h3>
+          <p class="text-xs text-muted">CMS email, segments, flows, SMS, WhatsApp, consent management</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-orange-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">📬</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">MC Engagement (Legacy)</h3>
+          <p class="text-xs text-muted">Journey Builder, Data Extensions, Content Builder, automations, SOAP/REST</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-amber-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">📈</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Marketing Intelligence</h3>
+          <p class="text-xs text-muted">TotalConnect, attribution models, ad connectors, ROI dashboards</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">💰</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Sales Cloud</h3>
+          <p class="text-xs text-muted">Lead management, opportunity tracking, forecasting, CPQ integration</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">🎧</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Service Cloud</h3>
+          <p class="text-xs text-muted">Case management, knowledge, omni-channel, entitlements, milestones</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">🤖</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Agentforce</h3>
+          <p class="text-xs text-muted">GenAI functions, plugins, planners, bot config, deployment, Agent API</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-red-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">🏪</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Commerce Cloud</h3>
+          <p class="text-xs text-muted">B2B/B2C setup, OMS, inventory, product visibility, order-on-behalf</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-yellow-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">🌐</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Experience Cloud</h3>
+          <p class="text-xs text-muted">Site deployment, CMS, embedded messaging, guest permissions</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-pink-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">⭐</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Loyalty Management</h3>
+          <p class="text-xs text-muted">Programs, tiers, promotions, vouchers, partner onboarding, journals</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-teal-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">🔗</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">MuleSoft</h3>
+          <p class="text-xs text-muted">API management, DataWeave, runtime deployment, monitoring, CI/CD</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-emerald-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">🏥</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Health Cloud</h3>
+          <p class="text-xs text-muted">Consent management, authorization forms, data use purpose</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-sky-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">🏦</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Financial Services Cloud</h3>
+          <p class="text-xs text-muted">Financial accounts, transactions, unified catalog, service processes</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-lime-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">🏭</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">Manufacturing Cloud</h3>
+          <p class="text-xs text-muted">Sales agreements, product catalogs, pricebook management</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-5 card-hover">
+          <div class="w-9 h-9 bg-violet-100 rounded-lg flex items-center justify-center mb-3"><span class="text-lg">📉</span></div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1">CRM Analytics</h3>
+          <p class="text-xs text-muted">Dashboard development, Wave API, Einstein Discovery integration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section id="how" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">How It Works</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Plan → Approve → Execute</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">MeshMesh follows a structured workflow with human approval gates. Nothing deploys to production without sign-off.</p>
+      </div>
+      <div class="grid md:grid-cols-4 gap-6 mb-12">
+        <div class="relative">
+          <div class="bg-white border border-border rounded-2xl p-6 card-hover h-full">
+            <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+              <span class="text-lg font-extrabold text-primary">1</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Connect Org</h3>
+            <p class="text-xs text-muted leading-relaxed">FDE connects MeshMesh to the customer's Salesforce org. Inherits the connected user's permissions — no admin escalation.</p>
+          </div>
+          <div class="hidden md:block absolute top-1/2 -right-3 text-gray-300 text-xl">→</div>
+        </div>
+        <div class="relative">
+          <div class="bg-white border border-border rounded-2xl p-6 card-hover h-full">
+            <div class="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+              <span class="text-lg font-extrabold text-accent-dark">2</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Describe the Task</h3>
+            <p class="text-xs text-muted leading-relaxed">FDE describes what needs to be built in natural language. Upload specs, brand kits, data dictionaries. MeshMesh plans the implementation.</p>
+          </div>
+          <div class="hidden md:block absolute top-1/2 -right-3 text-gray-300 text-xl">→</div>
+        </div>
+        <div class="relative">
+          <div class="bg-white border border-border rounded-2xl p-6 card-hover h-full">
+            <div class="w-10 h-10 bg-warning/10 rounded-xl flex items-center justify-center mb-4">
+              <span class="text-lg font-extrabold text-warning">3</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Review Plan</h3>
+            <p class="text-xs text-muted leading-relaxed">MeshMesh generates a detailed implementation plan. FDE reviews, adjusts, and approves before any changes are made to the org.</p>
+          </div>
+          <div class="hidden md:block absolute top-1/2 -right-3 text-gray-300 text-xl">→</div>
+        </div>
+        <div>
+          <div class="bg-white border border-border rounded-2xl p-6 card-hover h-full">
+            <div class="w-10 h-10 bg-success/10 rounded-xl flex items-center justify-center mb-4">
+              <span class="text-lg font-extrabold text-success">4</span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">Execute & Verify</h3>
+            <p class="text-xs text-muted leading-relaxed">MeshMesh executes the plan programmatically — deploying metadata, creating records, configuring settings. Results are verified in real-time.</p>
+          </div>
+        </div>
+      </div>
+      <!-- What can it actually do -->
+      <div class="bg-gradient-to-r from-primary/5 to-accent/5 border border-primary/10 rounded-2xl p-8">
+        <h3 class="font-bold text-gray-900 text-lg mb-6 text-center">What MeshMesh Actually Executes</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <h4 class="text-xs font-bold text-primary uppercase tracking-wider mb-3">Metadata & Configuration</h4>
+            <div class="space-y-2 text-xs text-muted">
+              <p>Deploy Apex classes, triggers, and test classes</p>
+              <p>Create and modify Flows (all 8 types)</p>
+              <p>Build Custom Objects, Fields, Validation Rules</p>
+              <p>Configure Permission Sets and Profiles</p>
+              <p>Deploy Lightning Web Components</p>
+              <p>Set up Page Layouts and Record Types</p>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-accent-dark uppercase tracking-wider mb-3">Data Operations</h4>
+            <div class="space-y-2 text-xs text-muted">
+              <p>Bulk API data ingestion (millions of records)</p>
+              <p>Data Cloud DLO/DMO creation and mapping</p>
+              <p>Identity resolution ruleset configuration</p>
+              <p>Segment creation and activation</p>
+              <p>Calculated Insights with SQL</p>
+              <p>Cross-org data migration</p>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-success uppercase tracking-wider mb-3">Marketing & Engagement</h4>
+            <div class="space-y-2 text-xs text-muted">
+              <p>CMS email content creation and publishing</p>
+              <p>Segment-Triggered and Broadcast Flows</p>
+              <p>Journey Builder configuration (MCE)</p>
+              <p>Data Extension management (MCE)</p>
+              <p>SMS and WhatsApp channel setup</p>
+              <p>Consent and subscription management</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== APPEXCHANGE ===================== -->
+  <section id="appexchange" class="py-20 md:py-28 bg-surface-dark text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-accent-light uppercase tracking-widest mb-3">Partnership</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">AppExchange Partner</h2>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">MeshMesh is an official Salesforce AppExchange partner — not a shadow tool or unsanctioned integration.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-white mb-6">What This Means for Your Deals</h3>
+          <div class="space-y-4 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-success-light text-lg mt-0.5">✓</span>
+              <div><span class="font-semibold text-white">Listed on AppExchange.</span> <span class="text-gray-400">Customers can find MeshMesh through the official Salesforce marketplace. This is a sanctioned partner, not a rogue tool.</span></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-success-light text-lg mt-0.5">✓</span>
+              <div><span class="font-semibold text-white">Salesforce permission model.</span> <span class="text-gray-400">MeshMesh inherits the connected user's permissions. It cannot do anything the user can't already do. No superuser access, no backdoors.</span></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-success-light text-lg mt-0.5">✓</span>
+              <div><span class="font-semibold text-white">Complementary to PS.</span> <span class="text-gray-400">MeshMesh handles the fast implementation work. Complex strategy, change management, and enterprise architecture are still PS/SI territory. It's additive, not competitive.</span></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-success-light text-lg mt-0.5">✓</span>
+              <div><span class="font-semibold text-white">Drives license revenue.</span> <span class="text-gray-400">When implementation is fast, customers are more willing to buy multiple products. MeshMesh is a deal accelerator — it helps you sell more Salesforce.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-white mb-6">How MeshMesh Fits the Ecosystem</h3>
+          <div class="space-y-5">
+            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+              <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center shrink-0"><span class="text-lg">🏢</span></div>
+              <div>
+                <div class="text-sm font-semibold text-white">Salesforce AE Sells Licenses</div>
+                <div class="text-xs text-gray-400">Data Cloud, MC Next, MCI, Agentforce, etc.</div>
+              </div>
+            </div>
+            <div class="flex justify-center"><span class="text-gray-600 text-xl">↓</span></div>
+            <div class="flex items-center gap-4 p-4 bg-primary/10 rounded-xl border border-primary/20">
+              <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center shrink-0"><span class="text-lg">⚡</span></div>
+              <div>
+                <div class="text-sm font-semibold text-primary-light">MeshMesh FDEs Implement Fast</div>
+                <div class="text-xs text-gray-400">POC in 30 days, not 6 months. Customer sees value immediately.</div>
+              </div>
+            </div>
+            <div class="flex justify-center"><span class="text-gray-600 text-xl">↓</span></div>
+            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+              <div class="w-10 h-10 bg-success/20 rounded-lg flex items-center justify-center shrink-0"><span class="text-lg">📈</span></div>
+              <div>
+                <div class="text-sm font-semibold text-white">Customer Expands</div>
+                <div class="text-xs text-gray-400">Proven value → more licenses, more products, PS for advanced work.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="glass rounded-2xl p-6 text-center">
+        <p class="text-sm text-gray-400">MeshMesh is <span class="text-white font-semibold">not a replacement for Salesforce Professional Services or SI partners</span>. It's a force multiplier that gets the initial implementation done fast, proving platform value so the customer invests in the larger engagement. Think of it as the POC machine that opens the door for the bigger deal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOR AEs ===================== -->
+  <section id="for-aes" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">For Account Teams</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Why Your Accounts Should Care</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">How MeshMesh changes the conversation with your customers — and accelerates your pipeline.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white border border-border rounded-2xl p-8 card-hover">
+          <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 text-lg mb-3">The Old Objection</h3>
+          <p class="text-muted leading-relaxed mb-4">"We love Salesforce but implementation takes too long and costs too much. We were quoted $1M+ and 6-12 months before we see any value."</p>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="text-sm text-danger font-semibold">This is the #1 reason deals stall or die.</p>
+          </div>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-8 card-hover">
+          <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 text-lg mb-3">The New Answer</h3>
+          <p class="text-muted leading-relaxed mb-4">"What if we could get a working POC in 30 days? Live campaigns, real data, measurable ROI — with 2 engineers, not a 20-person SI team."</p>
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="text-sm text-success font-semibold">MeshMesh turns implementation objections into proof-of-value conversations.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Scenarios -->
+      <div class="mt-10">
+        <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">Deal Acceleration Scenarios</h3>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="bg-gradient-to-br from-purple-50 to-white border border-purple-100 rounded-2xl p-6">
+            <div class="text-xs font-bold text-primary uppercase tracking-wider mb-3">Scenario 1</div>
+            <h4 class="font-bold text-gray-900 mb-2">Multi-Cloud POC</h4>
+            <p class="text-xs text-muted leading-relaxed mb-3">Customer wants Data Cloud + MC Next + MCI but balks at the implementation timeline. MeshMesh FDEs stand up all three in 30 days as a POC.</p>
+            <p class="text-xs font-semibold text-primary">Result: Customer buys all 3 licenses after seeing live proof.</p>
+          </div>
+          <div class="bg-gradient-to-br from-cyan-50 to-white border border-cyan-100 rounded-2xl p-6">
+            <div class="text-xs font-bold text-accent-dark uppercase tracking-wider mb-3">Scenario 2</div>
+            <h4 class="font-bold text-gray-900 mb-2">Migration De-Risk</h4>
+            <p class="text-xs text-muted leading-relaxed mb-3">Customer migrating from a competitor (Marketo, HubSpot, Adobe). Traditional migration quote is $1M+. MeshMesh proves the migration path in 30 days for a fraction.</p>
+            <p class="text-xs font-semibold text-accent-dark">Result: Migration deal closes because risk is proven manageable.</p>
+          </div>
+          <div class="bg-gradient-to-br from-green-50 to-white border border-green-100 rounded-2xl p-6">
+            <div class="text-xs font-bold text-success uppercase tracking-wider mb-3">Scenario 3</div>
+            <h4 class="font-bold text-gray-900 mb-2">Agentforce Accelerator</h4>
+            <p class="text-xs text-muted leading-relaxed mb-3">Customer excited about Agentforce but doesn't know where to start. MeshMesh FDE builds and deploys a working agent in days — GenAI functions, plugins, planners, the full stack.</p>
+            <p class="text-xs font-semibold text-success">Result: Agentforce goes from slide deck to live demo, driving expansion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== SECURITY ===================== -->
+  <section id="security" class="py-20 md:py-28 bg-surface">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Security & Trust</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Enterprise-Ready Security</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">The first question security teams will ask. Here are the answers.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-white border border-border rounded-2xl p-6 card-hover">
+          <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Salesforce Permissions</h3>
+          <p class="text-xs text-muted leading-relaxed">MeshMesh operates with the connected user's permissions. No privilege escalation. No admin backdoors. If the user can't do it in Setup, MeshMesh can't do it either.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-6 card-hover">
+          <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Zero Data Retention</h3>
+          <p class="text-xs text-muted leading-relaxed">No customer data is stored or retained by the AI models. Operations are isolated by task, user, and organization. Data flows through, never persists.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-6 card-hover">
+          <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">SOC 2 Compliance</h3>
+          <p class="text-xs text-muted leading-relaxed">SOC 2 Type II in progress. Third-party penetration testing completed. ISO 42001 (AI management) posture alignment.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-6 card-hover">
+          <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Human Approval Gates</h3>
+          <p class="text-xs text-muted leading-relaxed">Every implementation plan requires human review and approval before execution. Nothing deploys to production without an FDE or client sign-off.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-6 card-hover">
+          <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Task Isolation</h3>
+          <p class="text-xs text-muted leading-relaxed">Each task runs in an isolated environment. No cross-contamination between customers, users, or org connections. Full audit trail of every operation.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-6 card-hover">
+          <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">AppExchange Listed</h3>
+          <p class="text-xs text-muted leading-relaxed">Salesforce-vetted partner on the official AppExchange. This isn't a workaround — it's part of the ecosystem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-surface-dark"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-6 py-24 md:py-32 text-center text-white">
+      <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Ready to Accelerate<br>Your Accounts?</h2>
+      <p class="text-xl text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto">
+        MeshMesh turns implementation from a deal blocker into a deal accelerator. Let's talk about how it fits your pipeline.
+      </p>
+      <a href="mailto:sales@meshmesh.io" class="inline-flex items-center gap-2 bg-white text-primary font-bold px-10 py-4 rounded-xl text-lg shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all">
+        Get in Touch
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-surface-darker text-gray-600 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="font-bold text-gray-400 text-lg tracking-tight">Mesh<span class="text-primary-light">Mesh</span></div>
+      <p class="text-sm text-gray-500">Internal Use — Salesforce Account Team Primer</p>
+    </div>
+  </footer>
+
+</body>
+</html>
