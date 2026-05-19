@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MeshMesh × Expedia — Marketing Cloud Next POC Proposal</title>
+  <script src="https://assets.meshmesh.io/system/tailwindcss-browser-4.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #6C3AED;
+      --color-primary-light: #8B5CF6;
+      --color-primary-dark: #5B21B6;
+      --color-accent: #06B6D4;
+      --color-accent-light: #22D3EE;
+      --color-accent-dark: #0891B2;
+      --color-success: #10B981;
+      --color-success-light: #34D399;
+      --color-warning: #F59E0B;
+      --color-danger: #EF4444;
+      --color-surface: #F8FAFC;
+      --color-surface-dark: #0F172A;
+      --color-surface-darker: #020617;
+      --color-muted: #64748B;
+      --color-border: #E2E8F0;
+      --color-track-dc: #8B5CF6;
+      --color-track-mca: #06B6D4;
+      --color-track-mci: #F59E0B;
+      --color-track-client: #EF4444;
+      --color-track-uat: #10B981;
+    }
+    body { font-family: 'Inter', system-ui, sans-serif; scroll-behavior: smooth; }
+    .gradient-text { background: linear-gradient(135deg, #8B5CF6, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
+    .glass-white { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.3); }
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .nav-link { transition: color 0.15s ease; }
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #E2E8F0 20%, #E2E8F0 80%, transparent); }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .float { animation: float 6s ease-in-out infinite; }
+    .float-delay { animation: float 6s ease-in-out 2s infinite; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-surface-dark/90 backdrop-blur-lg border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="font-bold text-white text-lg tracking-tight">Mesh<span class="text-primary-light">Mesh</span></div>
+      <div class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#problem" class="nav-link text-gray-400 hover:text-white">Problem</a>
+        <a href="#why-mc-next" class="nav-link text-gray-400 hover:text-white">Why MC Next</a>
+        <a href="#solution" class="nav-link text-gray-400 hover:text-white">Solution</a>
+        <a href="#timeline" class="nav-link text-gray-400 hover:text-white">30-Day Plan</a>
+        <a href="#gantt" class="nav-link text-gray-400 hover:text-white">Gantt</a>
+        <a href="#how-it-works" class="nav-link text-gray-400 hover:text-white">How It Works</a>
+        <a href="#steelman" class="nav-link text-gray-400 hover:text-white">Steelman</a>
+        <a href="#comparison" class="nav-link text-gray-400 hover:text-white">Comparison</a>
+        <a href="#long-tail" class="nav-link text-gray-400 hover:text-white">Long-Tail</a>
+        <a href="#cta" class="nav-link text-primary-light hover:text-white font-semibold">Let's Talk</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative bg-surface-dark text-white overflow-hidden pt-20">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 right-1/4 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[120px] float"></div>
+      <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] float-delay"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 text-sm font-medium text-primary-light mb-8">
+          <span class="w-2 h-2 bg-primary-light rounded-full animate-pulse"></span>
+          Proposal for Expedia Group
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+          Consolidate 4 Marketo Instances.<br>
+          <span class="gradient-text">30 Days. Not 12 Months.</span>
+        </h1>
+        <p class="text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl">
+          A working Marketing Cloud Next POC with live email campaigns, ad spend tracking, SMS, WhatsApp, and measurable ROI — powered by MeshMesh and delivered by two forward-deployed engineers.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-16">
+          <a href="#timeline" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
+            See the 30-Day Plan
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a href="#comparison" class="inline-flex items-center gap-2 glass text-white font-medium px-6 py-3 rounded-xl text-sm hover:bg-white/10 transition-colors">
+            See Cost Comparison
+          </a>
+        </div>
+      </div>
+      <!-- Hero Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl font-extrabold text-accent-light mb-1">30</div>
+          <div class="text-sm text-gray-400 font-medium">Days to POC</div>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl font-extrabold text-success-light mb-1">55%</div>
+          <div class="text-sm text-gray-400 font-medium">Automated</div>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl font-extrabold text-warning mb-1">$0</div>
+          <div class="text-sm text-gray-400 font-medium">SF Services Cost</div>
+        </div>
+        <div class="glass rounded-2xl p-6 text-center card-hover">
+          <div class="text-4xl font-extrabold text-primary-light mb-1">2</div>
+          <div class="text-sm text-gray-400 font-medium">FDEs Required</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE PROBLEM ===================== -->
+  <section id="problem" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-danger uppercase tracking-widest mb-3">The Challenge</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">4 Marketo Instances.<br>One Fragmented Customer.</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Expedia's current marketing stack creates silos, duplication, and a $1.2M bill just to consolidate.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-red-50/70 border border-red-100 rounded-2xl p-8 card-hover">
+          <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 text-lg mb-3">Fragmented Customer View</h3>
+          <p class="text-muted leading-relaxed">A traveler who books on one brand and browses another is treated as two strangers. Cross-brand upsell and loyalty opportunities are completely invisible.</p>
+        </div>
+        <div class="bg-red-50/70 border border-red-100 rounded-2xl p-8 card-hover">
+          <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 text-lg mb-3">$1.2M Quoted Cost</h3>
+          <p class="text-muted leading-relaxed">Traditional systems integrators quoted $1.2M+ to consolidate 4 instances — with a 6–12 month timeline before any business value materializes.</p>
+        </div>
+        <div class="bg-red-50/70 border border-red-100 rounded-2xl p-8 card-hover">
+          <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 text-lg mb-3">Big-Bang Migration Risk</h3>
+          <p class="text-muted leading-relaxed">Traditional migrations are all-or-nothing. By the time they go live, business requirements have shifted. The risk of expensive failure is real and well-documented.</p>
+        </div>
+      </div>
+      <!-- Killer stat -->
+      <div class="bg-gray-900 rounded-3xl p-8 md:p-12 text-center text-white">
+        <p class="text-5xl md:text-7xl font-extrabold mb-3 gradient-text">$1.2M</p>
+        <p class="text-lg text-gray-400 max-w-xl mx-auto">quoted to consolidate 4 Marketo instances via traditional services — before a single email is sent.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== WHY MC NEXT ===================== -->
+  <section id="why-mc-next" class="py-20 md:py-28 bg-surface">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Strategic Direction</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Why Marketing Cloud Next — Not Legacy MCE</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Moving from Marketo to legacy MCE/SFMC trades one silo for another. MC Next is the modern, native Salesforce architecture.</p>
+      </div>
+      <div class="bg-white rounded-3xl border border-border shadow-sm overflow-hidden">
+        <div class="grid md:grid-cols-2">
+          <!-- Legacy side -->
+          <div class="p-8 md:p-10 border-b md:border-b-0 md:border-r border-border">
+            <div class="inline-flex items-center gap-2 bg-red-50 text-danger text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6">Legacy MCE / SFMC</div>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="text-danger text-lg mt-0.5">✕</span>
+                <div><span class="font-semibold text-gray-900">Separate platform</span> <span class="text-muted">— ExactTarget bolted onto Salesforce, own login, own data model</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-danger text-lg mt-0.5">✕</span>
+                <div><span class="font-semibold text-gray-900">Data Extensions</span> <span class="text-muted">— siloed, batch-synced, no real-time capability</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-danger text-lg mt-0.5">✕</span>
+                <div><span class="font-semibold text-gray-900">Journey Builder</span> <span class="text-muted">— proprietary orchestration engine, REST/SOAP APIs</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-danger text-lg mt-0.5">✕</span>
+                <div><span class="font-semibold text-gray-900">AMPscript / SSJS</span> <span class="text-muted">— proprietary languages, small talent pool</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-danger text-lg mt-0.5">✕</span>
+                <div><span class="font-semibold text-gray-900">Contact Builder</span> <span class="text-muted">— separate identity model from CRM</span></div>
+              </div>
+            </div>
+          </div>
+          <!-- MC Next side -->
+          <div class="p-8 md:p-10 bg-primary/[0.02]">
+            <div class="inline-flex items-center gap-2 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6">Marketing Cloud Next</div>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="text-success text-lg mt-0.5">✓</span>
+                <div><span class="font-semibold text-gray-900">Native Salesforce</span> <span class="text-muted">— built on the platform, one login, one architecture</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success text-lg mt-0.5">✓</span>
+                <div><span class="font-semibold text-gray-900">Data Cloud DMOs</span> <span class="text-muted">— unified, real-time, Unified Individual profiles</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success text-lg mt-0.5">✓</span>
+                <div><span class="font-semibold text-gray-900">Salesforce Flows</span> <span class="text-muted">— 8 flow types, native orchestration, no separate engine</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success text-lg mt-0.5">✓</span>
+                <div><span class="font-semibold text-gray-900">Apex + Flows</span> <span class="text-muted">— standard Salesforce skills, huge talent pool</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success text-lg mt-0.5">✓</span>
+                <div><span class="font-semibold text-gray-900">Data Cloud Identity</span> <span class="text-muted">— Unified Individual across all brands, real-time resolution</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success text-lg mt-0.5">✓</span>
+                <div><span class="font-semibold text-gray-900">SMS + WhatsApp native</span> <span class="text-muted">— built-in flow elements, not bolt-on channels</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Architecture callout -->
+      <div class="mt-8 bg-gradient-to-r from-primary/5 to-accent/5 border border-primary/10 rounded-2xl p-8 text-center">
+        <p class="text-lg font-semibold text-gray-900 mb-2">MC Next is Salesforce's strategic direction for marketing.</p>
+        <p class="text-muted max-w-2xl mx-auto">One platform, one data model, one orchestration engine. Expedia gets on the right architecture from Day 1 — not a legacy platform that will eventually be sunset.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE SOLUTION ===================== -->
+  <section id="solution" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">The Proposition</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">MeshMesh: AI-Powered Salesforce Operations</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Two FDEs + MeshMesh replaces months of SI work. 55% fully automated, with realistic timelines for human dependencies and campaign physics.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Data Cloud Ingestion</h3>
+          <div class="text-2xl font-extrabold text-primary mb-1">100%</div>
+          <p class="text-sm text-muted">Bulk API, Streaming Ingest, DLO/DMO mapping, identity resolution — all programmatic</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="w-11 h-11 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-accent-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Segmentation</h3>
+          <div class="text-2xl font-extrabold text-accent-dark mb-1">100%</div>
+          <p class="text-sm text-muted">Waterfall, DBT, Dynamic, Lookalike segments — all created and published via API</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="w-11 h-11 bg-success/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Email & CMS Content</h3>
+          <div class="text-2xl font-extrabold text-success mb-1">100%</div>
+          <p class="text-sm text-muted">CMS email content creation, publishing, and management via Connect API</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="w-11 h-11 bg-warning/10 rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-5 h-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Flow Orchestration</h3>
+          <div class="text-2xl font-extrabold text-warning mb-1">90%</div>
+          <p class="text-sm text-muted">Segment-Triggered, Broadcast, Event-Triggered flows — built and managed programmatically</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== 30-DAY TIMELINE ===================== -->
+  <section id="timeline" class="py-20 md:py-28 bg-surface">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Execution Plan</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">30-Day POC Timeline</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">From zero to live campaigns, ad tracking, and ROI proof in four weeks.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Week 1 -->
+        <div class="relative bg-gradient-to-br from-primary to-primary-dark rounded-3xl p-8 text-white overflow-hidden card-hover">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative">
+            <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest mb-4">
+              <span class="w-1.5 h-1.5 bg-primary-light rounded-full"></span> Week 1 · Days 1–7
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Data Foundation</h3>
+            <div class="space-y-3 text-white/85 text-sm leading-relaxed">
+              <p><span class="text-white font-semibold">Provision Data Cloud</span> and configure the unified data model across all brands.</p>
+              <p><span class="text-white font-semibold">Ingest customer data</span> from all 4 Marketo instances via Bulk API — contacts, leads, engagement history.</p>
+              <p><span class="text-white font-semibold">Create DMOs</span> for Individual, ContactPointEmail, and begin ad spend data ingestion from Google/Meta via S3 connectors.</p>
+              <p><span class="text-white font-semibold">Identity resolution</span> — configure rulesets so one traveler across multiple instances becomes one Unified Individual.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Week 2 -->
+        <div class="relative bg-gradient-to-br from-accent-dark to-cyan-800 rounded-3xl p-8 text-white overflow-hidden card-hover">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative">
+            <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest mb-4">
+              <span class="w-1.5 h-1.5 bg-accent-light rounded-full"></span> Week 2 · Days 8–14
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Email & Flows Live</h3>
+            <div class="space-y-3 text-white/85 text-sm leading-relaxed">
+              <p><span class="text-white font-semibold">CMS email content</span> — create branded email assets via Connect API (block-based, native Salesforce CMS).</p>
+              <p><span class="text-white font-semibold">Data Cloud segments</span> — build waterfall segments for engagement tiers (Hot/Warm/Cold) on Unified Individual.</p>
+              <p><span class="text-white font-semibold">Segment-Triggered Flows</span> — first campaign goes live. Flow checks consent via CommSubscription, resolves email via the identity chain, sends personalized content per tier.</p>
+              <p><span class="text-white font-semibold">Consent management</span> — CommSubscription model configured for compliance.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Week 3 -->
+        <div class="relative bg-gradient-to-br from-emerald-700 to-emerald-900 rounded-3xl p-8 text-white overflow-hidden card-hover">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative">
+            <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest mb-4">
+              <span class="w-1.5 h-1.5 bg-success-light rounded-full"></span> Week 3 · Days 15–21
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Ad Tracking & Omnichannel</h3>
+            <div class="space-y-3 text-white/85 text-sm leading-relaxed">
+              <p><span class="text-white font-semibold">Custom ad spend DMOs</span> — campaign, channel, spend, impressions, clicks, conversions, revenue all modeled in Data Cloud.</p>
+              <p><span class="text-white font-semibold">Calculated Insights</span> — ROAS, revenue per conversion, cost per acquisition built as reusable metrics with scheduled refresh.</p>
+              <p><span class="text-white font-semibold">Activation targets</span> — export high-value audience segments to S3/GCS for ad platform syncing.</p>
+              <p><span class="text-white font-semibold">SMS + WhatsApp</span> — native flow elements activated for booking confirmations and travel alerts.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Week 4 -->
+        <div class="relative bg-gradient-to-br from-amber-600 to-orange-700 rounded-3xl p-8 text-white overflow-hidden card-hover">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative">
+            <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest mb-4">
+              <span class="w-1.5 h-1.5 bg-amber-300 rounded-full"></span> Week 4 · Days 22–30
+            </div>
+            <h3 class="text-2xl font-bold mb-4">ROI Proven</h3>
+            <div class="space-y-3 text-white/85 text-sm leading-relaxed">
+              <p><span class="text-white font-semibold">ROI performance reports</span> — spend vs. revenue by campaign, channel, and brand generated directly from Data Cloud.</p>
+              <p><span class="text-white font-semibold">Engagement scoring</span> — Calculated Insights power engagement scores; high-score travelers auto-create CRM leads via flows.</p>
+              <p><span class="text-white font-semibold">Profile Insight widgets</span> — CAC, ROAS, engagement score visible on Lead/Contact records in-context.</p>
+              <p><span class="text-white font-semibold">Migration playbook</span> — documented path for consolidating remaining Marketo instances. Stakeholder presentation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEAM STRUCTURE ===================== -->
+  <section id="team" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Team Structure</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Two FDEs + Client Stakeholders</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Parallel workstreams with clear ownership. FDE 1 handles Data + Intelligence, FDE 2 handles Marketing Execution.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="w-11 h-11 bg-purple-100 rounded-xl flex items-center justify-center mb-5"><span class="text-xl">👩‍💻</span></div>
+          <h3 class="font-bold text-gray-900 mb-2">FDE 1 — Data & Intelligence</h3>
+          <p class="text-sm text-muted leading-relaxed">Owns Data Cloud setup, identity resolution, ad spend ingestion, Calculated Insights, and MCI configuration. Shifts to MCI full-time in Week 2.</p>
+          <div class="mt-3 flex flex-wrap gap-1">
+            <span class="text-xs bg-purple-100 text-track-dc px-2 py-0.5 rounded-full font-medium">Data Cloud</span>
+            <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">MCI</span>
+          </div>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="w-11 h-11 bg-cyan-100 rounded-xl flex items-center justify-center mb-5"><span class="text-xl">👨‍💻</span></div>
+          <h3 class="font-bold text-gray-900 mb-2">FDE 2 — Marketing Execution</h3>
+          <p class="text-sm text-muted leading-relaxed">Owns MCA setup, CMS email content, consent management, segment creation, Flow building, campaign execution, and SMS/WhatsApp activation.</p>
+          <div class="mt-3 flex flex-wrap gap-1">
+            <span class="text-xs bg-cyan-100 text-track-mca px-2 py-0.5 rounded-full font-medium">MCA</span>
+          </div>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="w-11 h-11 bg-red-100 rounded-xl flex items-center justify-center mb-5"><span class="text-xl">🏢</span></div>
+          <h3 class="font-bold text-gray-900 mb-2">Client — Marketing Ops</h3>
+          <p class="text-sm text-muted leading-relaxed">Provides Marketo data exports, brand assets, email content direction, campaign briefs, UAT sign-off, and ad platform credentials. 4-6 hrs/week.</p>
+          <div class="mt-3 flex flex-wrap gap-1">
+            <span class="text-xs bg-red-100 text-danger px-2 py-0.5 rounded-full font-medium">Client</span>
+          </div>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center mb-5"><span class="text-xl">✅</span></div>
+          <h3 class="font-bold text-gray-900 mb-2">Client — Exec Sponsor</h3>
+          <p class="text-sm text-muted leading-relaxed">Campaign approval authority, final UAT sign-off, budget for ad test campaigns, stakeholder presentation. 1-2 hrs/week.</p>
+          <div class="mt-3 flex flex-wrap gap-1">
+            <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Approver</span>
+          </div>
+        </div>
+      </div>
+      <!-- Client dependency callout -->
+      <div class="mt-8 bg-red-50 border border-red-100 rounded-2xl p-6 flex items-start gap-4">
+        <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
+          <svg class="w-5 h-5 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-1">Client Dependencies Are the Critical Path</h3>
+          <p class="text-sm text-muted leading-relaxed">This plan assumes Expedia provides: (1) Marketo data exports by Day 3, (2) Brand assets and email content direction by Day 7, (3) UAT sign-off within 48 hours of each gate, (4) Ad platform credentials by Day 10, (5) Campaign approval within 24 hours. Delays in any of these push the timeline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== GANTT CHART ===================== -->
+  <section id="gantt" class="py-20 md:py-28 bg-surface">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Gantt Chart</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">30-Day Execution Timeline</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Hover over bars for task details. <span class="text-danger font-semibold">Red</span> = client gates. <span class="text-track-uat font-semibold">Green</span> = UAT/dwell time.</p>
+      </div>
+      <!-- Legend -->
+      <div class="flex flex-wrap justify-center gap-4 mb-6 text-xs font-medium">
+        <div class="flex items-center gap-2"><div class="w-4 h-3 rounded-sm bg-track-dc"></div> Data Cloud (FDE 1)</div>
+        <div class="flex items-center gap-2"><div class="w-4 h-3 rounded-sm bg-track-mca"></div> MCA / MC Next (FDE 2)</div>
+        <div class="flex items-center gap-2"><div class="w-4 h-3 rounded-sm bg-track-mci"></div> MCI / Intelligence (FDE 1)</div>
+        <div class="flex items-center gap-2"><div class="w-4 h-3 rounded-sm bg-track-uat"></div> UAT / Campaign Dwell</div>
+        <div class="flex items-center gap-2"><div class="w-4 h-3 rounded-sm bg-track-client"></div> Client Dependency</div>
+      </div>
+      <div class="bg-white border border-border rounded-2xl overflow-x-auto shadow-sm">
+        <div class="min-w-[1000px]">
+          <!-- Header -->
+          <div class="flex border-b border-border">
+            <div class="w-[260px] shrink-0 px-4 py-3 text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50 border-r border-border">Task</div>
+            <div class="flex-1 flex">
+              <div class="flex-1 text-center py-3 border-r border-border bg-purple-50/30"><div class="text-xs font-bold text-track-dc">WK 1</div><div class="text-[10px] text-muted">D1-5</div></div>
+              <div class="flex-1 text-center py-3 border-r border-border bg-cyan-50/30"><div class="text-xs font-bold text-track-mca">WK 2</div><div class="text-[10px] text-muted">D6-10</div></div>
+              <div class="flex-1 text-center py-3 border-r border-border bg-amber-50/30"><div class="text-xs font-bold text-track-mci">WK 3</div><div class="text-[10px] text-muted">D11-15</div></div>
+              <div class="flex-1 text-center py-3 border-r border-border bg-green-50/30"><div class="text-xs font-bold text-track-uat">WK 4</div><div class="text-[10px] text-muted">D16-20</div></div>
+              <div class="flex-1 text-center py-3 border-r border-border bg-orange-50/30"><div class="text-xs font-bold text-warning">WK 5</div><div class="text-[10px] text-muted">D21-25</div></div>
+              <div class="flex-1 text-center py-3 bg-gray-50/30"><div class="text-xs font-bold text-muted">WK 6</div><div class="text-[10px] text-muted">D26-30</div></div>
+            </div>
+          </div>
+          <!-- DATA CLOUD section header -->
+          <div class="flex border-b border-border bg-purple-50/20">
+            <div class="w-[260px] shrink-0 px-4 py-2 text-xs font-bold text-track-dc uppercase tracking-wider border-r border-border">Data Cloud (FDE 1)</div>
+            <div class="flex-1"></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Provision Data Cloud, configure data spaces, assign permission sets.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">DC Provisioning & Config</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:0%;width:10%" class="h-5 bg-track-dc rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D1-3</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="CLIENT GATE: Expedia exports customer data from all 4 Marketo instances.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-danger font-semibold border-r border-border">⬥ Client: Marketo Data Exports</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:3.3%;width:6.7%" class="h-5 bg-track-client rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D2-3</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Ingest Marketo exports via Bulk API. Create DLOs, map to Individual and ContactPointEmail DMOs.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Customer Data Ingestion & DMOs</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:6.7%;width:13.3%" class="h-5 bg-track-dc rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D3-7</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Configure identity resolution rulesets. Creates Unified Individual profiles across all 4 Marketo instances.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Identity Resolution Setup</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:13.3%;width:13.3%" class="h-5 bg-track-dc rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D5-8</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Custom DMOs for ad spend — campaign, channel, spend, impressions, clicks, conversions, revenue.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Ad Spend Data Model & Ingestion</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:20%;width:16.7%" class="h-5 bg-track-dc rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D7-12</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Calculated Insights: ROAS, revenue per conversion, CPA, engagement scoring. Scheduled refresh.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Calculated Insights (ROI Metrics)</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:33.3%;width:16.7%" class="h-5 bg-track-dc rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D11-15</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Activation targets for S3/GCS. One-time UI OAuth setup for Meta/Google.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Activation Targets & Segment Export</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:46.7%;width:13.3%" class="h-5 bg-track-dc rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D15-19</div></div>
+          </div>
+          <!-- MCA section header -->
+          <div class="flex border-b border-border bg-cyan-50/20">
+            <div class="w-[260px] shrink-0 px-4 py-2 text-xs font-bold text-track-mca uppercase tracking-wider border-r border-border">MCA / MC Next (FDE 2)</div>
+            <div class="flex-1"></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="CLIENT GATE: Brand guidelines, logo, email template direction, campaign briefs.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-danger font-semibold border-r border-border">⬥ Client: Brand Assets & Briefs</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:6.7%;width:10%" class="h-5 bg-track-client rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D3-6</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="CommSubscription model for consent. Critical — MC Next defaults to opt-out.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Consent & CommSubscription</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:13.3%;width:10%" class="h-5 bg-track-mca rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D5-7</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Branded email content via CMS. Welcome series, re-engagement, booking follow-up.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">CMS Email Content Creation</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:16.7%;width:16.7%" class="h-5 bg-track-mca rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D6-10</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Segments on Unified Individual: engagement tiers, brand audiences, high-value travelers.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Segment Creation (DC Segments)</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:26.7%;width:13.3%" class="h-5 bg-track-mca rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D9-13</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Segment-Triggered Flows with email, consent checks, decision branches. Broadcast Flows.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Flow Building (Email Journeys)</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:33.3%;width:16.7%" class="h-5 bg-track-mca rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D11-15</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="CLIENT GATE: Review email content, segment logic, flow config. Must approve before live sends.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-danger font-semibold border-r border-border">⬥ Client: Campaign UAT</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:46.7%;width:10%" class="h-5 bg-track-uat rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D15-17</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="First live email campaign. Monitor deliverability. CAMPAIGNS NEED DWELL TIME to generate data.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">🚀 Campaign 1 Live + Dwell</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:53.3%;width:23.3%" class="h-5 bg-gradient-to-r from-track-mca to-track-uat rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D17-24 (7 days)</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="SMS and WhatsApp channel activation. Booking confirmations and travel alerts.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">SMS + WhatsApp Setup</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:53.3%;width:13.3%" class="h-5 bg-track-mca rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D17-21</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Second wave: A/B test variants, re-engagement, cross-channel (email + SMS).">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">🚀 Campaign 2 (A/B + SMS) + Dwell</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:66.7%;width:23.3%" class="h-5 bg-gradient-to-r from-track-mca to-track-uat rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D21-28 (7 days)</div></div>
+          </div>
+          <!-- MCI section header -->
+          <div class="flex border-b border-border bg-amber-50/20">
+            <div class="w-[260px] shrink-0 px-4 py-2 text-xs font-bold text-track-mci uppercase tracking-wider border-r border-border">MCI / Intelligence (FDE 1)</div>
+            <div class="flex-1"></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="CLIENT GATE: Ad platform admin credentials for OAuth connector setup.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-danger font-semibold border-r border-border">⬥ Client: Ad Platform Creds</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:26.7%;width:10%" class="h-5 bg-track-client rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D9-11</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="MCI provisioning, EMI permission sets, feature enablement.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">MCI Provisioning & Config</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:30%;width:10%" class="h-5 bg-track-mci rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D10-13</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="TotalConnect data pipelines for ad platform data. Map delivery and conversion models.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">TotalConnect Pipelines</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:36.7%;width:13.3%" class="h-5 bg-track-mci rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D12-16</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="UMA template, attribution windows (7-day, 28-day), click vs impression attribution.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Attribution Model Config</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:46.7%;width:13.3%" class="h-5 bg-track-mci rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D15-19</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="ROI dashboards: campaign performance, ROAS by channel, attribution analysis.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">ROI Dashboards & Reports</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:56.7%;width:16.7%" class="h-5 bg-track-mci rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D18-23</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="CLIENT GATE: Review dashboards, validate metrics, confirm ROI calculations.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-danger font-semibold border-r border-border">⬥ Client: Dashboard UAT</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:73.3%;width:6.7%" class="h-5 bg-track-uat rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D23-25</div></div>
+          </div>
+          <!-- Wrap-up section header -->
+          <div class="flex border-b border-border bg-gray-50">
+            <div class="w-[260px] shrink-0 px-4 py-2 text-xs font-bold text-gray-700 uppercase tracking-wider border-r border-border">Wrap-Up & Handoff</div>
+            <div class="flex-1"></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Compile campaign results with actual engagement data. ROAS from live campaigns.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">ROI Analysis (Live Data)</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:76.7%;width:13.3%" class="h-5 bg-gradient-to-r from-track-mci to-track-dc rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D24-28</div></div>
+          </div>
+          <div class="flex border-b border-border/60 hover:bg-gray-50/50" title="Full migration playbook for remaining 3 Marketo instances.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-gray-700 border-r border-border">Migration Playbook Docs</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:80%;width:13.3%" class="h-5 bg-gray-400 rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D25-29</div></div>
+          </div>
+          <div class="flex hover:bg-gray-50/50" title="CLIENT GATE: Final presentation. POC results, ROI proof, migration roadmap.">
+            <div class="w-[260px] shrink-0 px-4 py-2.5 text-xs text-danger font-semibold border-r border-border">⬥ Stakeholder Presentation (D30)</div>
+            <div class="flex-1 flex items-center px-1"><div style="margin-left:93.3%;width:6.7%" class="h-5 bg-gradient-to-r from-track-client to-primary rounded-md text-[9px] text-white font-medium flex items-center justify-center opacity-90">D29-30</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== STEELMAN ASSESSMENT ===================== -->
+  <section id="steelman" class="py-20 md:py-28 bg-surface-dark text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-accent-light uppercase tracking-widest mb-3">Steelman Assessment</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Can This Actually Be Done in 30 Days?</h2>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">An honest assessment accounting for human bottlenecks, campaign physics, and the reality that software doesn't run on its own.</p>
+      </div>
+      <div class="space-y-6">
+        <!-- The Math -->
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-white mb-6">Where Time Actually Goes</h3>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center md:text-left">
+              <div class="text-4xl font-extrabold text-primary-light mb-2">~55%</div>
+              <div class="text-sm font-semibold text-white mb-2">MeshMesh Automation</div>
+              <p class="text-xs text-gray-400 leading-relaxed">Data ingestion, DMO creation, identity resolution, segment building, CMS content, flow construction, Calculated Insights, activation targets, report generation. All programmatic. Two FDEs in parallel compress these to days, not weeks.</p>
+            </div>
+            <div class="text-center md:text-left">
+              <div class="text-4xl font-extrabold text-danger mb-2">~25%</div>
+              <div class="text-sm font-semibold text-white mb-2">Human Dependencies</div>
+              <p class="text-xs text-gray-400 leading-relaxed">Client data exports, brand assets, ad platform credentials, campaign content approval, dashboard UAT, final presentation. This is the critical path. FDEs are blocked during these windows.</p>
+            </div>
+            <div class="text-center md:text-left">
+              <div class="text-4xl font-extrabold text-track-uat mb-2">~20%</div>
+              <div class="text-sm font-semibold text-white mb-2">Campaign Physics</div>
+              <p class="text-xs text-gray-400 leading-relaxed">Campaigns need 7 days to generate meaningful data. Emails need time for opens and clicks. Conversion attribution needs 7-day windows. You cannot compress physics — this time is non-negotiable.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Verdict -->
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-white mb-6">Verdict: Yes, With Conditions</h3>
+          <div class="space-y-4 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-success-light text-lg mt-0.5">✓</span>
+              <div><span class="font-semibold text-white">Two FDEs make it feasible.</span> <span class="text-gray-400">FDE 1 (Data + Intelligence) and FDE 2 (Marketing Execution) work in parallel. While FDE 1 builds the data foundation in Week 1, FDE 2 prepares consent, content templates, and flow structures. No wasted time.</span></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-success-light text-lg mt-0.5">✓</span>
+              <div><span class="font-semibold text-white">MeshMesh compresses build work dramatically.</span> <span class="text-gray-400">What takes an SI 2-3 weeks (data model, segments, flows, content), MeshMesh executes in 2-3 days per workstream. The automation is real.</span></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-warning text-lg mt-0.5">⚠</span>
+              <div><span class="font-semibold text-white">Client responsiveness is the #1 risk.</span> <span class="text-gray-400">If any UAT gate takes more than 48 hours, the 30-day timeline is in jeopardy. A dedicated Expedia reviewer with 4-6 hrs/week availability is a hard requirement.</span></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-warning text-lg mt-0.5">⚠</span>
+              <div><span class="font-semibold text-white">ROI data will be directional, not definitive.</span> <span class="text-gray-400">With 7-10 days of campaign data, you get open rates, click rates, initial conversions, and early ROAS signals. Frame Day 30 as "early indicators" with a clear path to full measurement at Day 60.</span></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-success-light text-lg mt-0.5">✓</span>
+              <div><span class="font-semibold text-white">Pre-engagement prep is the biggest accelerator.</span> <span class="text-gray-400">If Expedia pre-stages Marketo exports, brand assets, and ad platform access during deal close, Week 1 is pure build — no waiting.</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- What Done looks like -->
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-bold text-white mb-6">What "Done" Looks Like on Day 30</h3>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="text-sm font-bold text-success-light uppercase tracking-wider mb-4">Delivered ✓</h4>
+              <div class="space-y-2 text-sm text-gray-300">
+                <p>Unified Individual profiles across all 4 Marketo instances</p>
+                <p>2+ live email campaigns with real engagement data</p>
+                <p>Waterfall segments with engagement tiering</p>
+                <p>SMS and/or WhatsApp channel proof-of-concept</p>
+                <p>Ad spend data ingested and modeled in Data Cloud</p>
+                <p>Calculated Insights for ROAS, CPA, engagement score</p>
+                <p>MCI configured with ad platform connectors</p>
+                <p>Early ROI indicators (7-day attribution window)</p>
+                <p>Migration playbook for remaining instances</p>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-warning uppercase tracking-wider mb-4">Phase 2 ⟶</h4>
+              <div class="space-y-2 text-sm text-gray-400">
+                <p>Full 28-day attribution analysis</p>
+                <p>Agentforce marketing agent</p>
+                <p>Remaining 3 Marketo instances fully migrated</p>
+                <p>Advanced multi-touch attribution model</p>
+                <p>MuleSoft integration for booking data</p>
+                <p>Einstein GPT and Lookalike segment exploration</p>
+                <p>Full production scaling and load testing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== RISK REGISTER ===================== -->
+  <section id="risks" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-danger uppercase tracking-widest mb-3">Risk Register</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">What Could Slow This Down</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Transparent risk assessment with mitigations. Every risk here has a plan.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="bg-red-50/70 border border-red-100 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold text-danger bg-red-100 px-2 py-0.5 rounded-full">HIGH</span>
+            <span class="font-bold text-gray-900 text-sm">Client Data Delivery Delays</span>
+          </div>
+          <p class="text-sm text-muted mb-3">If Marketo exports arrive after Day 5, the entire Data Cloud track shifts right, cascading into MCA and MCI.</p>
+          <p class="text-xs text-gray-700"><span class="font-semibold">Mitigation:</span> Pre-engagement data readiness checklist. Export templates provided in Week -1.</p>
+        </div>
+        <div class="bg-red-50/70 border border-red-100 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold text-danger bg-red-100 px-2 py-0.5 rounded-full">HIGH</span>
+            <span class="font-bold text-gray-900 text-sm">UAT Review Cycles > 48 Hours</span>
+          </div>
+          <p class="text-sm text-muted mb-3">If stakeholders take a week to review instead of 48 hours, Campaign 1 slips from Day 17 to Day 22+, compressing the data window.</p>
+          <p class="text-xs text-gray-700"><span class="font-semibold">Mitigation:</span> Dedicated client reviewer assigned pre-engagement. Daily 15-min sync during UAT gates.</p>
+        </div>
+        <div class="bg-amber-50/70 border border-amber-100 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold text-warning bg-amber-100 px-2 py-0.5 rounded-full">MEDIUM</span>
+            <span class="font-bold text-gray-900 text-sm">Identity Resolution Quality</span>
+          </div>
+          <p class="text-sm text-muted mb-3">If the 4 Marketo instances have inconsistent email formats or heavy duplication, match rates may be low, requiring re-tuning.</p>
+          <p class="text-xs text-gray-700"><span class="font-semibold">Mitigation:</span> FDE 1 runs sample resolution on Day 5 with small dataset. Full run only after validation.</p>
+        </div>
+        <div class="bg-amber-50/70 border border-amber-100 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold text-warning bg-amber-100 px-2 py-0.5 rounded-full">MEDIUM</span>
+            <span class="font-bold text-gray-900 text-sm">MCI Licensing Availability</span>
+          </div>
+          <p class="text-sm text-muted mb-3">MCI is a separate SKU. If not provisioned before Day 10, the entire MCI workstream is blocked.</p>
+          <p class="text-xs text-gray-700"><span class="font-semibold">Mitigation:</span> Confirm license during deal close. Fallback: ROI reports from Data Cloud queries (no MCI).</p>
+        </div>
+        <div class="bg-blue-50/70 border border-blue-100 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold text-blue-500 bg-blue-100 px-2 py-0.5 rounded-full">LOW</span>
+            <span class="font-bold text-gray-900 text-sm">Campaign Volume Too Low</span>
+          </div>
+          <p class="text-sm text-muted mb-3">If POC email lists are under 5K contacts, engagement data may be statistically insignificant.</p>
+          <p class="text-xs text-gray-700"><span class="font-semibold">Mitigation:</span> Target 10K+ contacts per campaign. Supplement with historical ad data for ROI baselines.</p>
+        </div>
+        <div class="bg-blue-50/70 border border-blue-100 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold text-blue-500 bg-blue-100 px-2 py-0.5 rounded-full">LOW</span>
+            <span class="font-bold text-gray-900 text-sm">Calculated Insight SQL Limits</span>
+          </div>
+          <p class="text-sm text-muted mb-3">Data Cloud CIs don't support DATEDIFF, CURRENT_DATE, or CAST. Rolling windows require numeric workarounds.</p>
+          <p class="text-xs text-gray-700"><span class="font-semibold">Mitigation:</span> MeshMesh uses known workaround patterns. Core ROAS/CPA metrics fully achievable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section id="how-it-works" class="py-20 md:py-28 bg-surface-dark text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-accent-light uppercase tracking-widest mb-3">In Practice</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">How MeshMesh Works</h2>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">An FDE or your own team tells MeshMesh what to build in plain language. MeshMesh executes the full operation on Marketing Cloud Next.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 bg-accent/20 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-accent-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div class="text-xs font-bold text-accent-light uppercase tracking-widest">Tiered Welcome Campaign</div>
+          </div>
+          <p class="text-white/90 italic mb-4">"Create a welcome flow with waterfall segments — Hot travelers get a personalized destination email, Warm get deals, Cold get a brand intro"</p>
+          <p class="text-white/50 text-sm mb-4">MeshMesh creates CMS email content for each tier, builds the waterfall segment, creates a Segment-Triggered Flow with decision branches, configures consent, and publishes.</p>
+          <div class="inline-flex items-center gap-2 bg-accent/15 text-accent-light text-xs font-bold px-3 py-1.5 rounded-full">~20 min vs. days manually</div>
+        </div>
+        <div class="glass rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 bg-success/20 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-success-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div class="text-xs font-bold text-success-light uppercase tracking-widest">Ad Spend ROI Analysis</div>
+          </div>
+          <p class="text-white/90 italic mb-4">"Show me ROAS by campaign for the last 30 days, broken down by channel"</p>
+          <p class="text-white/50 text-sm mb-4">MeshMesh queries Data Cloud ad spend DMOs, calculates revenue per conversion, ROAS, and CPA by campaign and channel. Generates a branded performance report with recommendations.</p>
+          <div class="inline-flex items-center gap-2 bg-success/15 text-success-light text-xs font-bold px-3 py-1.5 rounded-full">~5 min vs. hours of spreadsheets</div>
+        </div>
+        <div class="glass rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 bg-warning/20 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div class="text-xs font-bold text-warning uppercase tracking-widest">Re-Engagement Segment</div>
+          </div>
+          <p class="text-white/90 italic mb-4">"Build a segment of high-value travelers who haven't booked in 30+ days and sync to Meta for retargeting"</p>
+          <p class="text-white/50 text-sm mb-4">MeshMesh creates a Calculated Insight for LTV, builds a segment on Unified Individual, publishes it, and exports to an S3 activation target for Meta audience sync. Auto-refreshes continuously.</p>
+          <div class="inline-flex items-center gap-2 bg-warning/15 text-warning text-xs font-bold px-3 py-1.5 rounded-full">~10 min vs. multi-day ops request</div>
+        </div>
+        <div class="glass rounded-2xl p-8 card-hover">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 bg-primary/20 rounded-lg flex items-center justify-center">
+              <svg class="w-4 h-4 text-primary-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </div>
+            <div class="text-xs font-bold text-primary-light uppercase tracking-widest">SMS + WhatsApp Booking Flow</div>
+          </div>
+          <p class="text-white/90 italic mb-4">"Set up an SMS and WhatsApp confirmation that fires when a booking event hits Data Cloud"</p>
+          <p class="text-white/50 text-sm mb-4">MeshMesh creates an Automation Event-Triggered Flow listening for booking events. Adds SMS and WhatsApp send elements, configures consent, and publishes. Native MC Next channels — no bolt-ons.</p>
+          <div class="inline-flex items-center gap-2 bg-primary/15 text-primary-light text-xs font-bold px-3 py-1.5 rounded-full">~15 min vs. hours of setup</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMPARISON ===================== -->
+  <section id="comparison" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Side by Side</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Cost & Timeline Comparison</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Traditional SI engagement vs. MeshMesh + two Forward-Deployed Engineers.</p>
+      </div>
+      <div class="bg-white border border-border rounded-3xl shadow-sm overflow-hidden">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-border">
+              <th class="py-5 px-6 text-sm font-bold text-gray-500 uppercase tracking-wider w-1/3">Dimension</th>
+              <th class="py-5 px-6 text-sm font-bold text-danger uppercase tracking-wider w-1/3 bg-red-50/50">Traditional SI</th>
+              <th class="py-5 px-6 text-sm font-bold text-primary uppercase tracking-wider w-1/3 bg-primary/[0.03]">MeshMesh + FDE</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr class="border-b border-border/60">
+              <td class="py-4 px-6 font-semibold text-gray-900">Estimated Cost</td>
+              <td class="py-4 px-6 text-muted bg-red-50/30">$1.2M+</td>
+              <td class="py-4 px-6 text-gray-900 bg-primary/[0.02] font-semibold">MeshMesh license + 2 FDEs</td>
+            </tr>
+            <tr class="border-b border-border/60">
+              <td class="py-4 px-6 font-semibold text-gray-900">Time to First Value</td>
+              <td class="py-4 px-6 text-muted bg-red-50/30">6–12 months</td>
+              <td class="py-4 px-6 text-gray-900 bg-primary/[0.02] font-semibold">30 days (live campaigns)</td>
+            </tr>
+            <tr class="border-b border-border/60">
+              <td class="py-4 px-6 font-semibold text-gray-900">Full Migration</td>
+              <td class="py-4 px-6 text-muted bg-red-50/30">12–18 months</td>
+              <td class="py-4 px-6 text-gray-900 bg-primary/[0.02] font-semibold">90-day phased after POC</td>
+            </tr>
+            <tr class="border-b border-border/60">
+              <td class="py-4 px-6 font-semibold text-gray-900">SF Services Dependency</td>
+              <td class="py-4 px-6 text-muted bg-red-50/30">Queued behind engagements</td>
+              <td class="py-4 px-6 text-gray-900 bg-primary/[0.02] font-semibold">Zero — fully self-service</td>
+            </tr>
+            <tr class="border-b border-border/60">
+              <td class="py-4 px-6 font-semibold text-gray-900">Migration Risk</td>
+              <td class="py-4 px-6 text-muted bg-red-50/30">Big-bang, all-or-nothing</td>
+              <td class="py-4 px-6 text-gray-900 bg-primary/[0.02] font-semibold">Incremental — prove, then scale</td>
+            </tr>
+            <tr class="border-b border-border/60">
+              <td class="py-4 px-6 font-semibold text-gray-900">Platform Architecture</td>
+              <td class="py-4 px-6 text-muted bg-red-50/30">Legacy MCE (separate platform)</td>
+              <td class="py-4 px-6 text-gray-900 bg-primary/[0.02] font-semibold">MC Next — native Salesforce</td>
+            </tr>
+            <tr>
+              <td class="py-4 px-6 font-semibold text-gray-900">Channels</td>
+              <td class="py-4 px-6 text-muted bg-red-50/30">Email-only initial scope</td>
+              <td class="py-4 px-6 text-gray-900 bg-primary/[0.02] font-semibold">Email + SMS + WhatsApp + Ads</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-6xl mx-auto"></div>
+
+  <!-- ===================== LONG-TAIL VALUE ===================== -->
+  <section id="long-tail" class="py-20 md:py-28 bg-surface">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Beyond the POC</div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Long-Tail Value</h2>
+        <p class="text-lg text-muted max-w-2xl mx-auto">The 30-day POC proves the model. The long-tail unlocks capabilities Marketo simply cannot offer — and represents significant ongoing engagement.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="text-3xl mb-4">🤖</div>
+          <h3 class="font-bold text-gray-900 mb-2">Agentforce AI Agents</h3>
+          <p class="text-sm text-muted leading-relaxed">Autonomous marketing operations — campaign analysis, lead qualification, and segment management via conversational AI agents. Phase 2 engagement.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="text-3xl mb-4">🔗</div>
+          <h3 class="font-bold text-gray-900 mb-2">Customer 360</h3>
+          <p class="text-sm text-muted leading-relaxed">Data Cloud Unified Individual across all Expedia brands. One traveler, one profile, complete cross-brand visibility and personalization.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="text-3xl mb-4">⚡</div>
+          <h3 class="font-bold text-gray-900 mb-2">Real-Time Segmentation</h3>
+          <p class="text-sm text-muted leading-relaxed">Sub-second segment qualification as events arrive. Real-time data graphs and real-time segments for immediate personalization at scale.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="text-3xl mb-4">🧠</div>
+          <h3 class="font-bold text-gray-900 mb-2">Einstein GPT Segments</h3>
+          <p class="text-sm text-muted leading-relaxed">AI-discovered audiences — Einstein GPT identifies segments you didn't know existed. Lookalike modeling for audience expansion.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="text-3xl mb-4">📊</div>
+          <h3 class="font-bold text-gray-900 mb-2">Attribution Modeling</h3>
+          <p class="text-sm text-muted leading-relaxed">Multi-touch attribution via Calculated Insights across email, ads, SMS, WhatsApp, and booking events. Data-driven budget allocation.</p>
+        </div>
+        <div class="bg-white border border-border rounded-2xl p-7 card-hover">
+          <div class="text-3xl mb-4">🔄</div>
+          <h3 class="font-bold text-gray-900 mb-2">MuleSoft Integration</h3>
+          <p class="text-sm text-muted leading-relaxed">Real-time booking, pricing, and inventory data from Expedia's core systems flowing into marketing decisioning and personalization.</p>
+        </div>
+      </div>
+      <!-- SI partner callout -->
+      <div class="mt-10 bg-gradient-to-r from-purple-50 to-cyan-50 border border-primary/10 rounded-2xl p-8 text-center">
+        <p class="text-lg font-semibold text-gray-900 mb-2">The long-tail work is a separate workstream.</p>
+        <p class="text-muted max-w-3xl mx-auto">Deep MCE-level customizations, Agentforce agent development, and advanced integrations represent significant ongoing engagement — potentially for Salesforce Professional Services, an SI partner, or continued MeshMesh + FDE work. The POC de-risks the investment and proves the platform before any of that begins.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section id="cta" class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-surface-dark"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary-light/10 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-6 py-24 md:py-32 text-center text-white">
+      <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Let's Run a<br>30-Day POC</h2>
+      <div class="max-w-2xl mx-auto space-y-6 mb-10">
+        <p class="text-xl text-white/80 leading-relaxed">
+          One MeshMesh license. Two forward-deployed engineers. 30 days.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+          <div class="glass rounded-xl px-4 py-3">
+            <div class="font-bold text-white">Live Email</div>
+            <div class="text-white/50">Campaigns</div>
+          </div>
+          <div class="glass rounded-xl px-4 py-3">
+            <div class="font-bold text-white">Ad Spend</div>
+            <div class="text-white/50">Tracking</div>
+          </div>
+          <div class="glass rounded-xl px-4 py-3">
+            <div class="font-bold text-white">SMS + WhatsApp</div>
+            <div class="text-white/50">Channels</div>
+          </div>
+          <div class="glass rounded-xl px-4 py-3">
+            <div class="font-bold text-white">ROI</div>
+            <div class="text-white/50">Dashboard</div>
+          </div>
+        </div>
+        <p class="text-lg text-white/60">
+          Plus a proven playbook to consolidate all 4 Marketo instances<br>at a fraction of $1.2M.
+        </p>
+      </div>
+      <a href="mailto:sales@meshmesh.io" class="inline-flex items-center gap-2 bg-white text-primary font-bold px-10 py-4 rounded-xl text-lg shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all">
+        Start the Conversation
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-surface-darker text-gray-600 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="font-bold text-gray-400 text-lg tracking-tight">Mesh<span class="text-primary-light">Mesh</span></div>
+      <p class="text-sm text-gray-500">AI-Powered Salesforce Operations · Confidential — Prepared for Expedia Group</p>
+    </div>
+  </footer>
+
+</body>
+</html>
