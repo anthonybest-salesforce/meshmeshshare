@@ -244,8 +244,19 @@
       <div class="text-center mb-14">
         <div class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">The Proposition</div>
         <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">MeshMesh: AI-Powered Salesforce Operations</h2>
-        <p class="text-lg text-muted max-w-2xl mx-auto">Two FDEs + MeshMesh replaces months of SI work. 55% fully automated, with realistic timelines for human dependencies and campaign physics.</p>
+        <p class="text-lg text-muted max-w-2xl mx-auto">Two FDEs + MeshMesh replaces months of SI work. The automatable tasks below represent ~55% of total POC effort — the remaining 45% is human dependencies and campaign physics that no tool can compress.</p>
       </div>
+
+      <!-- Effort breakdown bar -->
+      <div class="mb-8">
+        <div class="flex rounded-xl overflow-hidden h-8 text-xs font-bold text-white">
+          <div class="bg-primary flex items-center justify-center" style="width:55%">55% — Automatable Build Work</div>
+          <div class="bg-danger/80 flex items-center justify-center" style="width:25%">25% — Human Deps</div>
+          <div class="bg-warning/80 flex items-center justify-center" style="width:20%">20% — Campaign Physics</div>
+        </div>
+        <p class="text-xs text-muted mt-2 text-center">Share of total 30-day POC effort · The percentages below show automation rates <span class="font-semibold">within</span> the 55% build-work portion</p>
+      </div>
+
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
         <div class="bg-white border border-border rounded-2xl p-7 card-hover">
           <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
@@ -253,6 +264,7 @@
           </div>
           <h3 class="font-bold text-gray-900 mb-2">Data Cloud Ingestion</h3>
           <div class="text-2xl font-extrabold text-primary mb-1">100%</div>
+          <p class="text-xs font-semibold text-primary/60 mb-1">Task-level automation rate</p>
           <p class="text-sm text-muted">Bulk API, Streaming Ingest, DLO/DMO mapping, identity resolution — all programmatic</p>
         </div>
         <div class="bg-white border border-border rounded-2xl p-7 card-hover">
@@ -261,6 +273,7 @@
           </div>
           <h3 class="font-bold text-gray-900 mb-2">Segmentation</h3>
           <div class="text-2xl font-extrabold text-accent-dark mb-1">100%</div>
+          <p class="text-xs font-semibold text-accent/60 mb-1">Task-level automation rate</p>
           <p class="text-sm text-muted">Waterfall, DBT, Dynamic, Lookalike segments — all created and published via API</p>
         </div>
         <div class="bg-white border border-border rounded-2xl p-7 card-hover">
@@ -269,6 +282,7 @@
           </div>
           <h3 class="font-bold text-gray-900 mb-2">Email & CMS Content</h3>
           <div class="text-2xl font-extrabold text-success mb-1">100%</div>
+          <p class="text-xs font-semibold text-success/60 mb-1">Task-level automation rate</p>
           <p class="text-sm text-muted">CMS email content creation, publishing, and management via Connect API</p>
         </div>
         <div class="bg-white border border-border rounded-2xl p-7 card-hover">
@@ -277,7 +291,8 @@
           </div>
           <h3 class="font-bold text-gray-900 mb-2">Flow Orchestration</h3>
           <div class="text-2xl font-extrabold text-warning mb-1">90%</div>
-          <p class="text-sm text-muted">Segment-Triggered, Broadcast, Event-Triggered flows — built and managed programmatically</p>
+          <p class="text-xs font-semibold text-warning/60 mb-1">Task-level automation rate</p>
+          <p class="text-sm text-muted">Segment-Triggered, Broadcast, Event-Triggered flows — built and managed programmatically. 10% requires manual channel activation.</p>
         </div>
       </div>
     </div>
@@ -589,11 +604,12 @@
         <!-- The Math -->
         <div class="glass rounded-2xl p-8">
           <h3 class="text-xl font-bold text-white mb-6">Where Time Actually Goes</h3>
+          <p class="text-sm text-gray-400 mb-6">The individual task cards above show 90-100% automation rates <em>within each task type</em>. But those automatable tasks represent only ~55% of the total 30-day effort. The other 45% is time the team spends waiting — not building.</p>
           <div class="grid md:grid-cols-3 gap-6">
             <div class="text-center md:text-left">
               <div class="text-4xl font-extrabold text-primary-light mb-2">~55%</div>
-              <div class="text-sm font-semibold text-white mb-2">MeshMesh Automation</div>
-              <p class="text-xs text-gray-400 leading-relaxed">Data ingestion, DMO creation, identity resolution, segment building, CMS content, flow construction, Calculated Insights, activation targets, report generation. All programmatic. Two FDEs in parallel compress these to days, not weeks.</p>
+              <div class="text-sm font-semibold text-white mb-2">Automatable Build Work</div>
+              <p class="text-xs text-gray-400 leading-relaxed">Data ingestion, DMO creation, identity resolution, segment building, CMS content, flow construction, Calculated Insights, activation targets, report generation. All programmatic at 90-100% automation rates. Two FDEs in parallel compress these to days, not weeks.</p>
             </div>
             <div class="text-center md:text-left">
               <div class="text-4xl font-extrabold text-danger mb-2">~25%</div>
