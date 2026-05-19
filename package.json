@@ -1,0 +1,15 @@
+{
+  "name": "meshmeshshare",
+  "version": "1.0.0",
+  "description": "Expedia × MeshMesh — Marketing Cloud Next POC Proposal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
